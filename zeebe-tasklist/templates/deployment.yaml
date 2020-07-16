@@ -19,11 +19,11 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         env:
           - name: SPRING_PROFILES_ACTIVE
-            value: {{ default "dev,dev-data,auth" .Values.springProfilesActive }}
+            value: {{ default "dev,dev-data,auth" .Values.springProfilesActive | quote }}
           - name: GRAPHQL_PLAYGROUND_ENABLED
-            value: {{ default "true" .Values.graphqlPlaygroundEnabled }}
+            value: {{ default "true" .Values.graphqlPlaygroundEnabled | quote }}
           - name: GRAPHQL_PLAYGROUND_SETTINGS_REQUEST_CREDENTIALS
-            value: {{ default "include" .Values.graphqlPlaygroundRequestCredentials }}      
+            value: {{ default "include" .Values.graphqlPlaygroundRequestCredentials | quote }}      
         resources:
           requests:
             cpu: 500m
