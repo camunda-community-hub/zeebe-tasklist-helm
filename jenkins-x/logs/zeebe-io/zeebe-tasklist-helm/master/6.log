@@ -1,0 +1,107 @@
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mcredential-initializer[0m
+{"level":"info","ts":1599214109.5217147,"caller":"creds-init/main.go:44","msg":"Credentials initialized."}
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mworking-dir-initializer[0m
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mplace-tools[0m
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-zeebe-io-zeebe-tasklist-helm-ma-nm9bf-44qzn[0m
+{"level":"info","ts":1599214144.0980148,"caller":"git/git.go:105","msg":"Successfully cloned https://github.com/zeebe-io/zeebe-tasklist-helm.git @ v0.0.6 in path /workspace/source"}
+{"level":"warn","ts":1599214144.106483,"caller":"git/git.go:152","msg":"Unexpected error: creating symlink: symlink /tekton/home/.ssh /root/.ssh: file exists"}
+{"level":"info","ts":1599214144.2798622,"caller":"git/git.go:133","msg":"Successfully initialized and updated submodules in path /workspace/source"}
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-builder-home[0m
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:892f0e0cc0e60340ee297b4f670cbe5a3fcb184f
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /tekton/home/git/credentials
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+/tekton/home/basic-auth-user.json
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+/tekton/home/basic-auth-pass.json
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf zeebe-tasklist/charts
+rm -rf zeebe-tasklist/zeebe-tasklist*.tgz
+rm -rf zeebe-tasklist/requirements.lock
+helm init --client-only
+Creating /tekton/home/.helm 
+Creating /tekton/home/.helm/repository 
+Creating /tekton/home/.helm/repository/cache 
+Creating /tekton/home/.helm/repository/local 
+Creating /tekton/home/.helm/plugins 
+Creating /tekton/home/.helm/starters 
+Creating /tekton/home/.helm/cache/archive 
+Creating /tekton/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /tekton/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+Happy Helming!
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+#helm repo add releases http://jenkins-x-chartmuseum:8080
+helm dependency build zeebe-tasklist
+No requirements found in zeebe-tasklist/charts.
+helm lint zeebe-tasklist
+==> Linting zeebe-tasklist
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.6/" zeebe-tasklist/Chart.yaml
+helm package zeebe-tasklist
+Successfully packaged chart and saved it to: /workspace/source/zeebe-tasklist-0.0.6.tgz
+curl --fail -u *****:*********** --data-binary "@zeebe-tasklist-0.0.6.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  3177  100    14  100  3163    397  89753 --:--:-- --:--:-- --:--:-- 90371
+{"saved":true}rm -rf zeebe-tasklist*.tgz
+** step changelog  --verbose --version 0.0.6 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-parse --is-shallow-repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --unshallow
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch --tags
+Converted /workspace/source to an unshallow repository
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git for-each-ref --sort=-creatordate --format=%(objectname)%00%(refname:short) --count=2 refs/tags
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-list -n 1 83b0dcc810d2e6eba9abe1b56e9a396435f6d4bf
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git for-each-ref --sort=-creatordate --format=%(objectname)%00%(refname:short) --count=1 refs/tags
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git rev-list -n 1 0e871a844ca124fd2006c0b9290968c4bc3968f9
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref 06363bd41ee8cb79ef114f624958fa5be2af2f94 => de975d17f1e4392cd1e9e81584aaea834125c686
+DEBUG: Found commits:
+DEBUG:   commit 892f0e0cc0e60340ee297b4f670cbe5a3fcb184f
+DEBUG:   Author: ******* <Salaboy@gmail.com>
+DEBUG:   Date: Fri Sep  4 11:07:54 2020
+DEBUG:       Create CONTRIBUTING.md
+
+
+Associating user *******-0 in users.jenkins.io with email Salaboy@gmail.com to git GitProvider user with login *******-1 as emails match
+Adding label jenkins.io/git-github-userid=*******-1 to user *******-0 in users.jenkins.io
+Associating user github in users.jenkins.io with email noreply@github.com to git GitProvider user with login github-0 as emails match
+Adding label jenkins.io/git-github-userid=github-0 to user github in users.jenkins.io
+Finding issues in commit messages using git format
+DEBUG: Generated release notes:
+
+## Changes
+
+* Create CONTRIBUTING.md (*******)
+
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git tag --list 0.0.6
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git tag --list v0.0.6
+WARNING: No release found for zeebe-io/zeebe-tasklist-helm and tag v0.0.6 so creating a new release
+Updated the release information at https://github.com/zeebe-io/zeebe-tasklist-helm/releases/tag/v0.0.6
+DEBUG: Not adding dependency matrix /workspace/source/dependency-matrix/matrix.yaml as does not exist
+generated: /workspace/source/zeebe-tasklist/templates/release.yaml
+Created Release zeebe-tasklist-helm-0-0-6 resource in namespace **
+Updating PipelineActivity zeebe-io-zeebe-tasklist-helm-master-6 with version 0.0.6
+Updated PipelineActivities zeebe-io-zeebe-tasklist-helm-master-6 with release notes URL: https://github.com/zeebe-io/zeebe-tasklist-helm/releases/tag/v0.0.6
+
+Showing logs for build [32mzeebe-io-zeebe-tasklist-helm-ma-nm9bf-6[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-step6[0m
+Using https://github.com/zeebe-io/zeebe-tasklist-helm as source for change discovered from git repo in /workspace/source
+Updated Pull Request: https://github.com/zeebe-io/zeebe-full-helm/pull/86
+Added label updatebot to Pull Request https://github.com/zeebe-io/zeebe-full-helm/pull/86
