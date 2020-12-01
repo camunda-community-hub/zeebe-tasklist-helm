@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.0"
 description: Zeebe TaskList Helm Chart for Kubernetes
 name: zeebe-tasklist-helm
-version: 0.1.0-SNAPSHOT
+version: 0.0.9
 icon: https://zeebe.io/img/zeebe-logo.png
 dependencies:
 - name: jenkins-x-crds
