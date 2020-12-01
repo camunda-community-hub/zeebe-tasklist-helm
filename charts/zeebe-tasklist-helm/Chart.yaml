@@ -4,7 +4,3 @@ description: Zeebe TaskList Helm Chart for Kubernetes
 name: zeebe-tasklist-helm
 version: 0.1.0-SNAPSHOT
 icon: https://zeebe.io/img/zeebe-logo.png
-dependencies:
-- name: jenkins-x-crds
-  repository: "https://storage.googleapis.com/jenkinsxio/charts"
-  version: 3.0.5
