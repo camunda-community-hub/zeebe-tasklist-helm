@@ -14,8 +14,8 @@ service:
   type: ClusterIP
   port: 80
 image:
-  repository: camunda/zeebe-tasklist
-  tag: SNAPSHOT
+  repository: gcr.io/camunda-researchanddevelopment/zeebe-tasklist-helm
+  tag: 0.0.7
 
 resources: 
   requests:
