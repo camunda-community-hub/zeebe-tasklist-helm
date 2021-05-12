@@ -15,7 +15,7 @@ service:
   port: 80
 image:
   repository: camunda/zeebe-tasklist
-  tag: 1.0.0-rc1
+  tag: 1.0.0
 
 resources: 
   requests:
